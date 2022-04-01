@@ -1,18 +1,20 @@
-import { useEffect, useState } from 'react';
+
+import { Router, Routes } from 'react-router-dom';
 import './App.css';
-import Navbar from './Navbar/Navbar';
-
+import Header from './Component/Header/Header';
+import Home from './Component/Home/Home';
+import OrderReview from './Component/OrderReview/OrderReview';
 function App() {
-  const {gun,SetGun} = useState([]);
-
-  useEffect(()=>{
-    fetch('https://raw.githubusercontent.com/mir-hussain/guns/main/data.json')
-    .then(res=>res.json())
-    .then(data=>console.log(data))
-  },[])
+ 
   return (
     <div className="App">
-     <Navbar></Navbar>
+    <Header></Header>
+    <Routes>
+      <Router path='/' elemenet={<Home></Home>} ></Router>
+      <Router path='/home' elemenet={<Home></Home>}></Router>
+      <Router path ='orderReview' elemenet={<OrderReview></OrderReview>}></Router>
+    </Routes>
+    
     </div>
   );
 }
